@@ -3,6 +3,9 @@ import json
 import tensorflow as tf
 from transformers import BertConfig, BertTokenizer, TFBertForSequenceClassification, glue_convert_examples_to_features
 
+print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+tf.config.experimental.list_physical_devices()
+
 USE_XLA = False
 USE_AMP = False
 
@@ -13,7 +16,6 @@ num_labels = 2
 config = BertConfig.from_pretrained("bert-base-cased", num_labels=num_labels)
 tokenizer = BertTokenizer.from_pretrained("bert-base-cased")
 model = TFBertForSequenceClassification.from_pretrained('bert-base-cased', config=config)
-
 
 def compile(data):
     start_time = time.time()
