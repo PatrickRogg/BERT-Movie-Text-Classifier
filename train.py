@@ -34,8 +34,8 @@ def compile(data):
 
 def fit(train_dataset, valid_dataset):
     train_steps, valid_steps, test_steps = get_info()
-    history = model.fit(train_dataset, epochs=3, steps_per_epoch=5,
-                        validation_data=valid_dataset, validation_steps=5)
+    history = model.fit(train_dataset, epochs=3, steps_per_epoch=train_steps,
+                        validation_data=valid_dataset, validation_steps=valid_steps)
     print(history)
 
 
